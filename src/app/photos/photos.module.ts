@@ -1,3 +1,4 @@
+import { PhotoDetailsModule } from './photo-datails/photo-details.module';
 import { PhotoListModule } from './photo-list/photo-list.module';
 import { NgModule } from "@angular/core";
 
@@ -8,7 +9,8 @@ import { PhotoFormModule } from './photo-form/photo-form.module';
     imports: [
         PhotoModule,
         PhotoFormModule,
-        PhotoListModule
+        PhotoListModule,
+        PhotoDetailsModule
     ]
 })
 export class PhotosModule { }
