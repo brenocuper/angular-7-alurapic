@@ -1,4 +1,4 @@
-import { PhotoComment } from './photo-comment';
+import { PhotoComment } from '../photo-datails/photo-comments/photo-comment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
@@ -42,5 +42,9 @@ export class PhotoService {
     getComments(photoId: number) {
         return this.http
             .get<PhotoComment[]>(API + '/photos/' + photoId + '/comments');
+    }
+
+    addComment(photoId: number, commentText: string) {
+        return this.http.post(API + '/photos/' + photoId + '/comments', { commentText});
     }
 }
