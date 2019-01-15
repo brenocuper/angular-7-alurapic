@@ -34,7 +34,11 @@ export class PhotoService {
         formData.append('description', description);
         formData.append('allowComments', allowComments ? 'true' : 'false');
         formData.append('imageFile', file);
-        return this.http.post(`${API}/photos/upload`, formData);
+        return this.http.post(
+            `${API}/photos/upload`,
+            formData,
+            { observe: 'events', reportProgress: true }
+        );
     }
 
     findById(photoId: number) {
@@ -48,7 +52,7 @@ export class PhotoService {
     }
 
     addComment(photoId: number, commentText: string) {
-        return this.http.post(API + '/photos/' + photoId + '/comments', { commentText});
+        return this.http.post(API + '/photos/' + photoId + '/comments', { commentText });
     }
 
     removePhoto(photoId: number) {
@@ -58,7 +62,7 @@ export class PhotoService {
     like(photoId: number) {
         // o final da url contém {} para dizer que não envia dado nenhum no post.
         return this.http
-            .post(API + '/photos/' + photoId + '/like', {}, {observe: 'response'})
+            .post(API + '/photos/' + photoId + '/like', {}, { observe: 'response' })
             .pipe(map(res => true))
             .pipe(catchError(err => {
                 return err.status == '304' ? of(false) : throwError(err);
