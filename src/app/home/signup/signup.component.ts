@@ -60,18 +60,20 @@ export class SignUpComponent implements OnInit {
         });
 
         this.platformDetectorService.isPlatformBrowser() &&
-        this.emailInput.nativeElement.focus();
+            this.emailInput.nativeElement.focus();
     }
 
     signup() {
+        if (this.signupForm.valid && !this.signupForm.pending) {
 
-        const newUser = this.signupForm.getRawValue() as NewUser;
+            const newUser = this.signupForm.getRawValue() as NewUser;
 
-        this.signUpService
-            .signup(newUser)
-            .subscribe(() =>
-                this.router.navigate(['']),
-                err => console.log(err)
-            );
+            this.signUpService
+                .signup(newUser)
+                .subscribe(() =>
+                    this.router.navigate(['']),
+                    err => console.log(err)
+                );
+        }
     }
 }
