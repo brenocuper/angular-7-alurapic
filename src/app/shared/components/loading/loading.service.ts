@@ -7,6 +7,7 @@ import { LoadingType } from './loading-type';
 @Injectable({ providedIn: 'root' })
 export class LoadingService {
 
+    // TODO: Estudar ~> Subject; asObservable.
     loadingSubject = new Subject<LoadingType>();
 
     getLoading() {

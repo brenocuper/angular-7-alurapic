@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+    // TODO: Estudar ~> instanceof; switchMap; Router; ActivatedRoute; Filter. 
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .pipe(map(() => this.activatedRoute))

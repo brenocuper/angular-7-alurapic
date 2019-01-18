@@ -1,4 +1,3 @@
-import { LoadingService } from './../../shared/components/loading/loading.service';
 import { PhotoService } from './../photo/photo.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
